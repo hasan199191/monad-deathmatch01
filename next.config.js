@@ -20,7 +20,8 @@ const nextConfig = {
   // Harici hostname'lere izin ver
   experimental: {
     externalDir: true,
-    esmExternals: "loose"
+    esmExternals: "loose",
+    swcPlugins: []
   },
   // Ngrok için güvenli bir şekilde izin ver
   async headers() {

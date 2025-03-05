@@ -1,9 +1,8 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import React, { useState, useCallback, useMemo, useEffect, useRef } from 'react';
-import type { FC } from 'react'; // Tip import'u ekledik
-import { ethers } from 'ethers'; 
+import type { FC } from 'react';
+import { ethers } from 'ethers';
 import { 
   useContractRead,
   useContractWrite,
@@ -28,6 +27,7 @@ import EliminatedPlayers from '@/components/EliminatedPlayers';
 import EliminationTimer from '@/components/EliminationTimer';
 import { createPublicClient, http } from 'viem'
 import { monad } from '@/config/chains'
+import { useRouter } from 'next/navigation';  // Yeni import
 
 // En üstte tip tanımları
 type BetType = "0" | "1";

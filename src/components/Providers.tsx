@@ -6,7 +6,14 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { monad } from '@/config/chains';
 import { Toaster } from 'react-hot-toast';
 
-const queryClient = new QueryClient();
+// QueryClient yapılandırması
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [monad],
