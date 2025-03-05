@@ -1,0 +1,157 @@
+/* globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* RainbowKit stil importu */
+@import '@rainbow-me/rainbowkit/styles.css';
+
+:root {
+  /* Renk Paleti */
+  --color-background: #0D0D0D;
+  --color-surface: #16181C;
+  --color-primary: #8B5CF6;
+  --color-primary-hover: #7C3AED;
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  --color-text: #FFFFFF;
+  --color-text-secondary: #9CA3AF;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.15);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.25);
+}
+
+/* Temel stiller */
+body {
+  @apply bg-[var(--color-background)] text-[var(--color-text)] antialiased;
+  font-feature-settings: 'ss01' on, 'ss02' on, 'cv01' on, 'cv03' on;
+}
+
+/* RainbowKit Modal Özelleştirmesi */
+.rainbowkit-modal {
+  @apply !bg-[var(--color-surface)] !rounded-[var(--radius-xl)] !border !border-[#2d3748] !shadow-xl;
+
+  /* Modal içi butonlar */
+  button:not([data-testid="close-button"]) {
+    @apply !bg-[var(--color-primary)] hover:!bg-[var(--color-primary-hover)] 
+           !text-white !rounded-[var(--radius-md)] !transition-all;
+  }
+
+  /* Bağlı cüzdan bilgisi */
+  [data-testid="account-button"] {
+    @apply !bg-[#2d3748] hover:!bg-[#374151];
+  }
+}
+
+/* Özel Bileşen Katmanı */
+@layer components {
+  /* Butonlar */
+  .btn-primary {
+    @apply px-6 py-3 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] 
+           text-white rounded-[var(--radius-md)] transition-colors font-medium 
+           flex items-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-[var(--color-surface)] hover:bg-[#1F2937] 
+           border border-[#2d3748] text-[var(--color-text)] rounded-[var(--radius-md)] 
+           transition-colors flex items-center gap-2;
+  }
+
+  /* Kartlar */
+  .card {
+    @apply bg-[var(--color-surface)] rounded-[var(--radius-xl)] border border-[#2d3748] 
+           backdrop-blur-sm;
+  }
+
+  .card-header {
+    @apply p-6 border-b border-[#2d3748] flex items-center justify-between;
+  }
+
+  /* Giriş Alanları */
+  .input-primary {
+    @apply w-full bg-[#1F2937] border border-[#2d3748] rounded-[var(--radius-md)] 
+           px-4 py-3 text-[var(--color-text)] focus:ring-2 focus:ring-[var(--color-primary)] 
+           focus:border-transparent transition-all;
+  }
+
+  /* Bağlantı Durum Göstergeleri */
+  .connection-status {
+    @apply px-4 py-2 rounded-full border text-sm flex items-center gap-2;
+
+    &.connected {
+      @apply bg-[#059669]/20 border-emerald-500 text-emerald-300;
+    }
+
+    &.disconnected {
+      @apply bg-[#1F2937] border-[#374151] text-[var(--color-text-secondary)];
+    }
+  }
+
+  /* Özellik Kartları */
+  .feature-card {
+    @apply p-6 bg-[var(--color-surface)] rounded-[var(--radius-lg)] border border-[#2d3748] 
+           hover:border-[var(--color-primary)] transition-colors;
+
+    h3 {
+      @apply text-xl font-bold mb-2;
+    }
+
+    p {
+      @apply text-[var(--color-text-secondary)] text-sm;
+    }
+  }
+
+  /* Yükleme Animasyonu */
+  .loading-spinner {
+    @apply w-8 h-8 border-4 border-[var(--color-primary)] border-t-transparent 
+           rounded-full animate-spin;
+  }
+}
+
+/* Özel Utility Sınıfları */
+@layer utilities {
+  /* Gradyan Metin */
+  .gradient-text {
+    @apply bg-gradient-to-r from-[var(--color-primary)] to-[#EC4899] 
+           text-transparent bg-clip-text;
+  }
+
+  /* Cam Efekti */
+  .glass-effect {
+    @apply backdrop-blur-lg bg-white/5 border border-white/10;
+  }
+
+  /* Kısaltılmış Cüzdan Adresi */
+  .wallet-address {
+    @apply font-mono text-sm bg-[#1F2937] px-2 py-1 rounded-[var(--radius-sm)];
+  }
+
+  /* Grid Düzenleri */
+  .responsive-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+}
+
+/* Mobile Optimizasyon */
+@media (max-width: 768px) {
+  .rainbowkit-modal {
+    @apply !w-[90vw] !p-4;
+
+    button {
+      @apply !text-sm;
+    }
+  }
+
+  .btn-primary, .btn-secondary {
+    @apply px-4 py-2 text-sm;
+  }
+}

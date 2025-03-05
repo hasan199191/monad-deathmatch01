@@ -1,0 +1,277 @@
+/* RainbowKit özelleştirmeleri en üstte olmalı */
+@import '@rainbow-me/rainbowkit/styles.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #171717;
+  --card-foreground: #fafafa;
+  --popover: #171717;
+  --popover-foreground: #fafafa;
+  --primary: #2563eb;
+  --primary-foreground: #fafafa;
+  --secondary: #171717;
+  --secondary-foreground: #fafafa;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --accent: #262626;
+  --accent-foreground: #fafafa;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #fafafa;
+  --border: #262626;
+  --input: #262626;
+  --ring: #2563eb;
+  --max-content-width: 100%; /* Maksimum genişlik sınırlaması kaldırıldı */
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 13, 13, 13;
+  --rk-colors-modalBackground: #0D0D0D;
+  --rk-colors-modalBackdrop: rgba(0, 0, 0, 0.8);
+  --rk-colors-modalText: white;
+  --rk-colors-modalTextSecondary: #9CA3AF;
+  --rk-colors-accentColor: #8B5CF6;
+  --rk-colors-connectButtonBackground: #8B5CF6;
+  --rk-colors-connectButtonBackgroundError: #EF4444;
+  --rk-colors-connectButtonInnerBackground: #0D0D0D;
+  --rk-colors-connectButtonText: white;
+  --rk-colors-connectButtonTextError: white;
+  --rk-radii-modal: 1rem;
+  --rk-radii-connectButton: 0.75rem;
+}
+
+/* Text shadow için özel class */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 4px 8px rgba(0,0,0,0.7);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  min-height: 100vh;
+  background-color: #0D0D0D;
+  color: white;
+}
+
+.sidebar-menu-item {
+  @apply flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200;
+}
+
+.sidebar-menu-item:hover {
+  @apply bg-[#171717];
+}
+
+.sidebar-menu-item.active {
+  @apply bg-[#171717] text-white;
+}
+
+.card {
+  @apply bg-[#171717] rounded-lg border border-[#262626];
+}
+
+.container {
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.twitter-connected {
+  display: flex;
+  align-items: center;
+  background: rgba(29, 161, 242, 0.1);
+  border: 1px solid rgba(29, 161, 242, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 12px;
+  color: #1DA1F2;
+  font-weight: 500;
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 16px;
+}
+
+.user-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.profile-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #444;
+  margin-right: 10px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.twitter-username {
+  color: #1DA1F2;
+  font-weight: 600;
+}
+
+.wallet-address {
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+/* Navbar stilleri */
+.navbar-link {
+  @apply text-gray-300 hover:text-[#8B5CF6] transition-colors;
+}
+
+.navbar-link-active {
+  @apply text-[#8B5CF6];
+}
+
+/* RainbowKit Modal Özelleştirmesi */
+[data-rk] {
+  --rk-colors-accentColor: var(--color-primary);
+  --rk-colors-connectButtonBackground: var(--color-primary);
+  --rk-colors-connectButtonText: var(--color-text);
+  --rk-colors-modalBackground: var(--color-surface);
+  --rk-colors-modalText: var(--color-text);
+  --rk-colors-modalTextSecondary: var(--color-text-secondary);
+  --rk-radii-connectButton: var(--radius-md);
+  --rk-fonts-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+[data-rk] {
+  --rk-colors-modalBackground: #0D0D0D;
+  --rk-colors-modalBackdrop: rgba(0, 0, 0, 0.8);
+  --rk-colors-modalText: white;
+  --rk-colors-modalTextSecondary: #9CA3AF;
+  --rk-colors-modalTextTertiary: #6B7280;
+  --rk-font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+[data-rk] .fadeIn {
+  animation: rkFadeIn 150ms ease-in-out;
+}
+
+@keyframes rkFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+[data-rk] .modal-card {
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+[data-rk] .wallet-button {
+  transition: all 0.2s ease-in-out;
+}
+
+[data-rk] .wallet-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+}
+
+/* Banner ve gradient stilleri */
+.banner-image {
+  @apply absolute inset-0 z-0 opacity-30 object-cover select-none;
+}
+
+.banner-overlay {
+  @apply absolute inset-0 z-10 bg-gradient-to-b from-transparent 
+         via-black/70 to-black;
+}
+
+/* Banner stilleri */
+.banner-image {
+  @apply fixed inset-0 w-full h-full object-cover opacity-30 select-none;
+  z-index: -1;
+}
+
+.banner-overlay {
+  @apply fixed inset-0 w-full h-full;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(13, 13, 13, 0.7) 50%,
+    #0D0D0D 100%
+  );
+}
+
+/* Ana içerik için z-index ayarı */
+.content-wrapper {
+  @apply relative z-20;
+}
+
+/* Button stilleri */
+.auth-button {
+  @apply w-full px-6 py-3 rounded-lg font-medium transition-colors;
+}
+
+.auth-button-primary {
+  @apply bg-[#8B5CF6] hover:bg-[#7C3AED] text-white;
+}
+
+.auth-button-success {
+  @apply bg-green-600 text-white cursor-not-allowed;
+}
+
+/* RainbowKit özelleştirmeleri */
+[data-rk] {
+  --rk-colors-accentColor: #8B5CF6;
+  --rk-colors-connectButtonBackground: #8B5CF6;
+  --rk-colors-connectButtonText: white;
+  --rk-colors-modalBackground: #0D0D0D;
+  --rk-colors-modalText: white;
+  --rk-radii-connectButton: 0.5rem;
+}
+
+/* Feature Cards */
+.feature-card {
+  @apply bg-[#1A1A1A] p-6 rounded-xl border border-[#262626] 
+         hover:border-[#8B5CF6] transition-colors;
+}
+
+.feature-icon {
+  @apply h-12 w-12 bg-[#8B5CF6]/20 rounded-lg flex items-center 
+         justify-center mb-4;
+}
+
+.feature-title {
+  @apply text-xl font-semibold text-white mb-2;
+}
+
+.feature-description {
+  @apply text-gray-400;
+}
