@@ -1,16 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
+  swcMinify: false, // SWC minify'ı devre dışı bırak
   output: 'standalone',
   images: {
-    domains: ['pbs.twimg.com', 'abs.twimg.com'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
+    domains: ['pbs.twimg.com', 'api.dicebear.com'],
   },
   env: {
     NEXT_PUBLIC_CONTRACT_ADDRESS: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS,
@@ -21,7 +15,8 @@ const nextConfig = {
   experimental: {
     externalDir: true,
     esmExternals: "loose",
-    swcPlugins: []
+    swcPlugins: [],
+    forceSwcTransforms: true
   },
   // Ngrok için güvenli bir şekilde izin ver
   async headers() {
@@ -31,7 +26,11 @@ const nextConfig = {
         headers: [
           { key: 'Access-Control-Allow-Origin', value: 'https://monad-deathmatch.vercel.app' },
           { key: 'Access-Control-Allow-Methods', value: 'GET,POST,OPTIONS' },
-          { key: 'Access-Control-Allow-Headers', value: 'Content-Type' }
+          { key: 'Access-Control-Allow-Headers', value: 'Content-Type' },
+          {
+            key: 'Content-Security-Policy',
+            value: "frame-ancestors 'self' https://monad-deathmatch01.vercel.app"
+          }
         ],
       },
     ];
@@ -58,6 +57,10 @@ const nextConfig = {
     'wagmi',
     'viem',
   ],
+  compiler: {
+    styledComponents: true
+  },
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx']
 };
 
 module.exports = nextConfig;

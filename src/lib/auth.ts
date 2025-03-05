@@ -39,5 +39,6 @@ export const authOptions: NextAuthOptions = {
       return token;
     }
   },
-  debug: true // Geliştirme aşamasında hataları görmek için
+  debug: process.env.NODE_ENV === 'development',
+  secret: process.env.NEXTAUTH_SECRET
 };
